@@ -22,9 +22,14 @@ public class CourseController {
         return courseRepository.findAllCoursesByStars(stars);
     }
 
+//    @GetMapping("/customer/{id}")
+//    public List<Course> findByCustomer(@PathVariable Long id){
+//        return courseRepository.findByCustomer(id);
+//    }
+
     @GetMapping("/customer/{id}")
-    public List<Course> findByCustomer(@PathVariable Long id){
-        return courseRepository.findByCustomer(id);
+    public List<Course> findCoursesByCustomerId(@PathVariable Long id){
+        return courseRepository.findCoursesByBookingsCustomerId(id);
     }
 }
 

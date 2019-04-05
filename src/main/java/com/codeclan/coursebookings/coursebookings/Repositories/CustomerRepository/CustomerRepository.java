@@ -9,7 +9,16 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long>, CustomerRepositoryCustom {
 
-//    List<Customer> findByCourseId(int course_id);
+    // Get all customers for a given course
+    List<Customer> findCustomersByBookingsCourseId(Long id);
+
+    // Get all customers in a given town for a given course
+    List<Customer> findCustomersByTownAndBookingsCourseId(String town, Long id);
+
+    // Get all customers over a certain age in a given town for a given course
+    List<Customer> findCustomersByAgeAndTownAndBookingsCourseId(int age, String town,Long id);
+
+    // List<Customer> findByCourseId(int course_id);
     // findAllCustomerByCourseId
     // findByCourseId
 }

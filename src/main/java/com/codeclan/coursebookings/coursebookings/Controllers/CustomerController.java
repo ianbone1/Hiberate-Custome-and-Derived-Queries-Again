@@ -18,8 +18,22 @@ public class CustomerController {
     CustomerRepository customerRepository;
 
     @GetMapping(value = "/courseid/{id}")
-    public List<Customer> findByCourseId(@PathVariable Long id){
-        return customerRepository.findByCourseId(id);
+    public List<Customer> findCustomersByBookingsCourseId(@PathVariable Long id){
+        return customerRepository.findCustomersByBookingsCourseId(id);
+    }
+//    public List<Customer> findByCourseId(@PathVariable Long id){
+//        return customerRepository.findByCourseId(id);
+//    }
+
+    @GetMapping(value = "/towncourse/{town}/{id}")
+    public List<Customer> findCustomerByTownByCoursesId(@PathVariable String town, @PathVariable Long id){
+        return customerRepository.findCustomersByTownAndBookingsCourseId(town, id);
+    }
+
+    // Get all customers over a certain age in a given town for a given course
+    @GetMapping(value = "/agetowncourse/{age}/{town}/{id}")
+    public List<Customer> findCustomersByAgeAndTownAndCourseId(@PathVariable int age, @PathVariable String town, @PathVariable Long id){
+        return customerRepository.findCustomersByAgeAndTownAndBookingsCourseId(age, town, id);
     }
 
 }
